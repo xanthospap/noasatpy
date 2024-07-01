@@ -1,0 +1,69 @@
+geometry:
+  add_pixels_above: 35
+  add_pixels_below: 35
+  add_pixels_left: 4
+  add_pixels_right: 4
+data_list:
+  prefix: /home/xanthos/Software/Satellite/data
+  suffix: fit
+  element_list:
+    - atom: H
+      spectrum: 
+        i:
+          atomic_list: 
+            - 6563
+            - 4861 
+            - 4340 
+            - 4101
+    - atom: He
+      spectrum: 
+        i:
+          atomic_list: 
+          - 5876
+          - 6678
+        ii:
+          atomic_list: 
+            - 5412
+            - 4686
+    - atom: N
+      spectrum: 
+        i:
+          atomic_list: 
+            - 5199
+        ii:
+          atomic_list: 
+            - 5755
+            - 6548
+            - 6583
+    - atom: O
+      spectrum: 
+        i:
+          atomic_list: 
+            - 5577
+            - 6300
+            - 6363
+        ii:
+          atomic_list: 
+            - 3727
+            - 3729
+            - 7320
+            - 7330
+        iii:
+          atomic_list: 
+            - 4363
+            - 4959
+            - 5007
+analysis:
+  specific_slit:
+    pixel_scale: 100
+    energy_parameter: -20
+    number_of_slits: 10
+    ## one value means use the same value for all slits
+    slit_width: 8
+    ## multiple values means one value per slit (use commas).
+    ##
+    ## if the number of values given are less than the number of slits, then 
+    ## the last value is used for the remaining slits.
+    slit_length: 320,25,21,42,18,8,46,25,25,320
+    x_coor: 153,37,68,104,140,169,202,254,285,154
+    y_coor: 106,148,142,135,128,123,116,106,100,126
