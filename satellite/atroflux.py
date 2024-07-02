@@ -20,6 +20,22 @@ def ratioError(a1,sa1,a2,sa2):
         par1 = par2 = 0e0
     return np.sqrt(par1*par1+par2*par2)
 
+"""
+Given two 2D arrays flux and fluxer, zero-out all elements in the arrays 
+for which:
+ a) flux(i,j) == 0 or
+ b) fluxer(i,j) / flux(i,j) >= limit
+"""
+def remove_problematic_values(flux_matrix, flux_error_matrix, limit=2e0):
+    flux = deepcopy(flux_matrix)
+    fluxer = deepcopy(flux_error_matrix)
+    with np.nditer(nparray, op_flags=['readwrite'], flags=['multi_index']) as it:
+        for x in it:
+            if x == 0e0 or fluxer[it.multi_index] / x >= limit:
+                x[...] = 0e0
+                fluxer[it.multi_index] = 0e0
+    return flux, fluxer
+
 def specific_line_analysis(flux,flux_err,angle):
     # https://github.com/xanthospap/SATELLITE/blob/main/satellite/satellite/specific_line_analysis_script.py
     flux_rot = rotate(flux, angle, order=5)
